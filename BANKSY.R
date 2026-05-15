@@ -168,21 +168,15 @@ invisible(gc())
 library(FNN) # For get.knn()
 
 compute_ncc_score <- function(coords, cluster_labels, k = 10) {
-  # coords: data frame or matrix with 2 columns (x, y)
-  # cluster_labels: vector of cluster assignments (e.g., from BANKSY)
-  # k: number of nearest neighbors
   
-  # Find k nearest neighbors
   knn_result <- get.knn(coords, k = k)
   
-  # For each cell, check how many neighbors have the same label
   matches <- sapply(1:nrow(coords), function(i) {
     neighbor_ids <- knn_result$nn.index[i, ]
     same_cluster <- sum(cluster_labels[neighbor_ids] == cluster_labels[i])
     same_cluster / k
   })
   
-  # Return the average neighborhood consistency
   ncc_score <- mean(matches)
   return(ncc_score)
 }
