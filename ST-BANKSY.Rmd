@@ -1,6 +1,6 @@
 ---
 title: "BANKSY implementation with SeuratWrappers"
-author: "Abderraouf Saleh Kihel"
+author: "Abderaouf Saleh Kihel"
 date: "2025-06-02"
 output: html_document
 ---
